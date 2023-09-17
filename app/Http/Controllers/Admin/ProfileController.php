@@ -52,7 +52,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function updateProfile(Request $request)
     {
         $request->validate([
             'name' => ['required', 'max:200'],
@@ -79,6 +79,21 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8']
+        ]);
+
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        return redirect()->back();
+    }
+
 
     /**
      * Remove the specified resource from storage.
