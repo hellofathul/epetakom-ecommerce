@@ -1158,9 +1158,9 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* 1.28 Toast */
 #toast-container > div {
+  opacity: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
   padding: 20px 20px 20px 50px;
-  opacity: 1;
 }
 #toast-container > .toast {
   background-image: none !important;
