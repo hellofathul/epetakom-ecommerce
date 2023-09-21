@@ -301,7 +301,7 @@ p {
 ========================*/
 header {
   width: 100%;
-  background: #08C;
+  background: #00ada5;
   padding: 19px 0px;
   height: 90px;
   border-bottom: 1px solid #fff;
@@ -658,7 +658,7 @@ header {
   line-height: 48px;
   display: block;
   font-size: 20px;
-  background: #08C;
+  background: #00ada5;
   position: relative;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s ease;
@@ -5333,8 +5333,8 @@ WISHLIST PAGE START
 .wsus__login_reg_area .nav-pills .nav-link.active,
 .wsus__login_reg_area .nav-pills .show>.nav-link {
   color: #fff !important;
-  border-color: #08C !important;
-  background: #08C !important;
+  border-color: #00ada5 !important;
+  background: #00ada5 !important;
 }
 
 .wsus__login_input {
