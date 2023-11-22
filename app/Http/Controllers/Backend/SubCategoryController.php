@@ -102,11 +102,11 @@ class SubCategoryController extends Controller
     public function destroy(string $id)
     {
         $subCategory = SubCategory::findOrFail($id);
-        // $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
+        $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
 
-        // if ($childCategory > 0) {
-        //     return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
-        // }
+        if ($childCategory > 0) {
+            return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
+        }
         $subCategory->delete();
 
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
