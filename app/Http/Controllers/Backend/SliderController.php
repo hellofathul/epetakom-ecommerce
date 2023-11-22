@@ -32,14 +32,14 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            "banner" => ["required","max:2000", "image"],
+        $request->validate([
+            "banner" => ["required", "max:2000", "image"],
             "type" => ["string", "max:200"],
-            "title"=> ["required","max:200"],
-            "starting_price"=> ["max:200"],
-            "button_url"=> ["url"],
-            "serial"=> ["required", "integer"],
-            "status"=> ["required"],
+            "title" => ["required", "max:200"],
+            "starting_price" => ["max:200"],
+            "button_url" => ["url"],
+            "serial" => ["required", "integer"],
+            "status" => ["required"],
         ]);
 
         $slider = new Slider();
@@ -57,7 +57,7 @@ class SliderController extends Controller
         $slider->status = $request->status;
         $slider->save();
 
-        toastr("Created Successfully!","success");
+        toastr("Created Successfully!", "success");
         return redirect()->back();
     }
 
@@ -74,7 +74,8 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
@@ -82,7 +83,32 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "banner" => ["nullable", "max:2000", "image"],
+            "type" => ["string", "max:200"],
+            "title" => ["required", "max:200"],
+            "starting_price" => ["max:200"],
+            "button_url" => ["url"],
+            "serial" => ["required", "integer"],
+            "status" => ["required"],
+        ]);
+
+        $slider = Slider::findOrFail($id);
+
+        // Handle file upload
+        $imagePath = $this->updateImage($request, 'banner', 'uploads', $slider->banner);
+
+        $slider->banner = empty(!$imagePath) ? $imagePath : $slider->banner;
+        $slider->type = $request->type;
+        $slider->title = $request->title;
+        $slider->starting_price = $request->starting_price;
+        $slider->button_url = $request->button_url;
+        $slider->serial = $request->serial;
+        $slider->status = $request->status;
+        $slider->save();
+
+        toastr("Updated Successfully!", "success");
+        return redirect()->route('admin.slider.index');
     }
 
     /**

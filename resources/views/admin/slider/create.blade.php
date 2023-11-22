@@ -46,7 +46,7 @@
                                     <label for="inputState">Status</label>
                                     <select id="inputState" class="form-control" name="status">
                                         <option value="1">Active</option>
-                                        <option value="2">Inactive</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Create</button>
