@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use File;   
+use File;
 
 class UserProfileController extends Controller
 {
@@ -54,6 +54,22 @@ class UserProfileController extends Controller
         $user->save();
 
         toastr()->success('Profile Updated Successfully', 'Success');
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8']
+        ]);
+
+        
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        toastr()->success('Password Updated Successfully', 'Success');
         return redirect()->back();
     }
 }
