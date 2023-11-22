@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -53,7 +55,8 @@
 
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2023 <div class="bullet"></div> eCommerce by <a href="https://nauval.in/">PETAKOM UMPSA</a>
+                    Copyright &copy; 2023 <div class="bullet"></div> eCommerce by <a href="https://nauval.in/">PETAKOM
+                        UMPSA</a>
                 </div>
                 <div class="footer-right">
 
@@ -79,6 +82,8 @@
     <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/  chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('backend/assets/js/page/index-0.js') }}"></script>
@@ -94,6 +99,7 @@
             @endforeach
         @endif
     </script>
+    @stack('scripts')
 </body>
 
 </html>
