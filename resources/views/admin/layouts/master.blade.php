@@ -143,7 +143,7 @@
                                         text: data.message,
                                         icon: "success"
                                     })
-                                    window.location.reload();
+                                    window.location.reload(true);
                                 } else if (data.status == 'error') {
                                     Swal.fire({
                                         title: "Can't Delete!",
