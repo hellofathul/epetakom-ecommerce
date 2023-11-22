@@ -23,14 +23,23 @@ class SliderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editButton = "<a href='".route('admin.slider.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteButton = "<a href='".route('admin.slider.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash'></i></a>";
-                return $editButton.$deleteButton;
+                $editButton = "<a href='" . route('admin.slider.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
+                $deleteButton = "<a href='" . route('admin.slider.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash'></i></a>";
+                return $editButton . $deleteButton;
             })
             ->addColumn('banner', function ($query) {
-                return $image = "<img width='100px' src='".asset($query->banner)."' ></img>";
+                return $image = "<img width='100px' src='" . asset($query->banner) . "' ></img>";
             })
-            ->rawColumns(["banner"], ["action"])
+            ->addColumn('status', function ($query) {
+                $active = '<i class="badge badge-success">Active</i>';
+                $inActive = '<i class="badge badge-danger">Inactive</i>';
+                if ($query->status == 1) {
+                    return $active;
+                } else {
+                    return $inActive;
+                }
+            })
+            ->rawColumns(['banner', 'action', 'status'])
             ->setRowId('id');
     }
 
