@@ -33,7 +33,7 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "banner" => ["required", "max:2000", "image"],
+            "banner" => ["required", "max:5000", "image"],
             "type" => ["string", "max:200"],
             "title" => ["required", "max:200"],
             "starting_price" => ["max:200"],
@@ -58,7 +58,7 @@ class SliderController extends Controller
         $slider->save();
 
         toastr("Created Successfully!", "success");
-        return redirect()->back();
+        return redirect()->route('admin.slider.index');
     }
 
     /**
