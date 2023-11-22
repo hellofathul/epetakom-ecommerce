@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <form action="{{route('admin.sub-category.update', $subCategory->id)}}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('put')
                         <div class="form-group">
                             <label for="inputState">Category</label>
                             <select id="inputState" class="form-control" name="category">
